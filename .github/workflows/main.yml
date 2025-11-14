@@ -22,5 +22,4 @@ jobs:
           mkdir test
           cp test.ino test
           arduino-cli compile --fqbn esp32:esp32:esp32s3usbotg:USBMode=hwcdc,PartitionScheme=default,DebugLevel=none,EraseFlash=none test/test.ino
-          arduino-cli upload --fqbn esp32:esp32:esp32s3usbotg:USBMode=hwcdc,PartitionScheme=default,DebugLevel=none,EraseFlash=none test/test.ino
-          
+          rduino-cli upload -p /dev/ttyACM0 --fqbn esp32:esp32:esp32s3usbotg:USBMode=hwcdc,PartitionScheme=default,DebugLevel=none,EraseFlash=none test/test.ino
