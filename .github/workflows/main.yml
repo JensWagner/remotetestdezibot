@@ -1,0 +1,24 @@
+on:
+  - push
+
+jobs:
+  run:
+    name: run
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout4
+      - name: Setup Arduino CLI
+        uses: arduino/setup-arduino-cli@v2.0.0
+      - name: config Dezi
+        run: |
+          arduino-cli config network.connection_timeout 60000s
+          arduino-cli lib install dezibot
+          arduino-cli core install esp32:esp32
+      - name: run
+        run: | 
+          mkdir test
+          cp test.ino test
+          arduino-cli compile test.ino -O test.ino 
+          arduino-cli upload --fqbn esp32:esp32:esp32usbotg:USBMode=hwdc test/test.ino
+          
