@@ -3,7 +3,6 @@
 
 Dezibot dezibot = Dezibot();
 void setup() {
-  // put your setup code here, to run once:
 dezibot.begin();
 }
 
